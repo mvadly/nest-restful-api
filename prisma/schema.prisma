@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  username String? @db.VarChar(100)
+  name     String? @db.VarChar(100)
+  password String? @db.VarChar(100)
+
+  @@map("users")
+}
+
+model item {
+  id    BigInt  @id
+  name  String? @db.VarChar(255)
+  price Float?
+  stock Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model item_seq {
+  next_val BigInt?
+
+  @@ignore
+}
