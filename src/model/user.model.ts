@@ -5,9 +5,9 @@ export class RegisterUserRequest {
 }
 
 export class UserResponse {
-  username: string;
-  name: string;
-  token?: string;
+  username: string | null;
+  name: string | null;
+  token?: string | null;
 }
 
 export class LoginUserRequest {
